@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="jumbotron text-center">
+    <h1>THOUGHTWORKS AIRLINES</h1>
+    <p>#1 Flight Booking Website</p>
+</div>
+<div class="container-fluid">
+
+    <div class="col-sm-4 sidenav">
+    </div>
+    <div class="col-sm-14">
+
+    <table class="table-condensed" >
+        <th>Number</th>
+        <th>Name</th>
+        <th>Source</th>
+        <th>Desination</th>
+        <tr th:each="flight:${flightList}">
+            <td th:text="${flight.flightNo}"></td>
+            <td th:text="${flight.flightName}"></td>
+            <td th:text="${flight.source}"></td>
+            <td th:text="${flight.destination}"></td>
+        </tr>
+    </table>
+    </div>
+    <div class="col-sm-2 sidenav">
+    </div>
+</div>
+
+</body>
+</html>

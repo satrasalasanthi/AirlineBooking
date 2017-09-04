@@ -1,10 +1,80 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <title>Getting Started: Serving Web Content</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text = "'Welcome to TWAirline'"/>
+
+<div class="jumbotron text-center">
+    <h1>THOUGHTWORKS AIRLINES</h1>
+    <p>#1 Flight Booking Website</p>
+</div>
+<div class="container-fluid">
+
+<form action="#" th:action="@{/flightSearch}" th:object="${flight}" method="post">
+    <div class="form-group">
+
+        <div class="col-sm-4 sidenav">
+        </div>
+        <div class="col-sm-14">
+            <table class="table-condensed">
+                <tr>
+                    <td>
+                        <label>FROM: </label>
+
+                    </td>
+                    <td>
+                        <select id="txtFrom" class="form-control" th:field="*{source}" >
+                            <option value="SELECT">SELECT</option>
+                            <option  value="Banglore"> Banglore</option>
+                            <option value="Hyderabad" > Hyderabad</option>
+                            <option value="Pune"> Pune </option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>TO: </label>
+                    </td>
+                    <td>
+                        <select id="txtTo" class="form-control" th:field="*{destination}" >
+                            <option value="SELECT">SELECT</option>
+                            <option value="Banglore" > Banglore</option>
+                            <option value="Hyderabad" > Hyderabad</option>
+                            <option value="Pune"> Pune </option>
+                        </select>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>No of seats: </label></td>
+                    <td>
+                        <input text id="txtseats" placeholder="Enter No of Seats" class="form-control" th:field="*{seats}">
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td >
+                        <button id="btnDetails" class="btn btn-success btn-block btn-lg" type="submit" >Search</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-2 sidenav">
+        </div>
+    </div>
+
+
+</form>
+</div>
+
+
 </body>
 </html>
