@@ -3,7 +3,7 @@
 <head>
 
     <title>Getting Started: Serving Web Content</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -15,9 +15,9 @@
     <h1>THOUGHTWORKS AIRLINES</h1>
     <p>#1 Flight Booking Website</p>
 </div>
-<div class="container-fluid">
 
-<form action="#" th:action="@{/flightSearch}" th:object="${flight}" method="post">
+
+<form  th:action="@{/flightSearch}" th:object="${flight}" method="post">
     <div class="form-group">
 
         <div class="col-sm-4 sidenav">
@@ -30,7 +30,8 @@
 
                     </td>
                     <td>
-                        <select id="txtFrom" class="form-control" th:field="*{source}" >
+
+                        <select id="txtFrom" class="form-control" th:field="*{sourceCity}" >
                             <option value="SELECT">SELECT</option>
                             <option  value="Banglore"> Banglore</option>
                             <option value="Hyderabad" > Hyderabad</option>
@@ -56,9 +57,32 @@
                 <tr>
                     <td><label>No of seats: </label></td>
                     <td>
-                        <input text id="txtseats" placeholder="Enter No of Seats" class="form-control" th:field="*{seats}">
+                        <input type="text" id="txtseats" placeholder="Enter No of Seats" class="form-control" th:field="*{seats}" />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <label>DepartureDate:</label>
+                    </td>
+                    <td>
+                        <input id="date" class="form-control" placeholder="EnterDatein YYYY-MM-DD format" type="text" th:field="*{departureDate}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Flight Class:</label>
+                    </td>
+                    <td>
+                        <select id="selFlightCLass" class="form-control" th:field="*{flightClass}" >
+                            <option value="SELECT">SELECT</option>
+                            <option value="Business" > Business</option>
+                            <option value="First" > First</option>
+                            <option value="Economy"> Economy </option>
+                        </select>
+
+                    </td>
+                </tr>
+
                 <tr>
                     <td></td>
                     <td >
@@ -70,11 +94,7 @@
         <div class="col-sm-2 sidenav">
         </div>
     </div>
-
-
 </form>
-</div>
-
 
 </body>
 </html>

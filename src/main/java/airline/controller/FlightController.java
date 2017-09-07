@@ -7,10 +7,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -32,15 +34,20 @@ public class FlightController
         SpringApplication.run(FlightController.class,args);
     }
 
-    @RequestMapping(value = "/flightSearch", method = RequestMethod.POST)
-    public String flightSearch(@ModelAttribute(value="flight") Flight flight, Model model)
-    {
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public String homePage(Model model) {
+        model.addAttribute("flight",new Flight());
+        return "flightSearch";
+    }
+
+    @RequestMapping(value = "/flightSearch",  method = RequestMethod.POST)
+    public String flightSearch(@ModelAttribute(value="flight") Flight flight, BindingResult bindingResult, Model model) throws ParseException {
         int seats= flight.getSeats();
         if(seats == 0)
         {
             seats =1;
         }
-        List<Flight> flightList=flightSearch.getAllTheFlights(flight.getSource(),flight.getDestination(),seats);
+        List<Flight> flightList=flightSearch.getAllTheFlights(flight.getSourceCity(),flight.getDestination(),seats,flight.getDepartureDate(),flight.flightClass);
         model.addAttribute("flightList",flightList);
         return  "flightSearchResults";
     }
