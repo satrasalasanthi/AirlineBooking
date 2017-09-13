@@ -19,65 +19,27 @@ public class FlightService {
 
         List<Flight> flightList = new ArrayList<Flight>();
 
-
-        Flight flt = new Flight();
-        flt.flightNo = 1;
-        flt.flightName = "JET";
-        flt.sourceCity = "Banglore";
-        flt.destination = "Hyderabad";
-        flt.seats = 10;
-        flt.departureDate = fmt.parse("2017-09-07");//new Date(2017,8,06);
-        flt.flightClassCategories = Arrays.asList(
-//                new FlightClassCategory("Economy",10),
-//                new FlightClassCategory("Business",10),
-                new FlightClassCategory("First",10)
-        );
+        Flight flt = new Flight("F0001",0,"Boeing777-200LR(77L)","Banglore","Hyderabad",fmt.parse("2017-09-07"),"",Arrays.asList(
+                new FlightClassCategory("First",8, 20000.00,5),
+                new FlightClassCategory("Business",35,13000.00,5),
+                new FlightClassCategory("Economy",195,6000.00,5)
+        ));
 
         flightList.add(flt);
 
-        flt = new Flight();
-        flt.flightNo = 2;
-        flt.flightName = "IndianAirLines";
-        flt.sourceCity = "Banglore";
-        flt.destination = "Hyderabad";
-        flt.seats = 10;
-        flt.departureDate =fmt.parse("2017-09-07");// new Date(2017,8,07);
-
-        flt.flightClassCategories = Arrays.asList(
-//                new FlightClassCategory("Economy",10),
-//                new FlightClassCategory("Business",10),
-                new FlightClassCategory("First",10)
-        );
+        flt = new Flight("F0002",0,"Airbus A319 V2","Banglore","Hyderabad",fmt.parse("2017-09-07"),"",Arrays.asList(
+                new FlightClassCategory("First",0,0.00,0),
+                new FlightClassCategory("Business",0,0.00,0),
+                new FlightClassCategory("Economy",144,4000.00,100)
+        ));
 
         flightList.add(flt);
 
-        flt = new Flight();
-        flt.flightNo = 3;
-        flt.flightName = "Kingfisher";
-        flt.sourceCity = "Banglore";
-        flt.destination = "Delhi";
-        flt.seats = 10;
-        flt.departureDate = fmt.parse("2017-09-06"); //new Date(2017,8,07);
-        flt.flightClassCategories = Arrays.asList(
-                new FlightClassCategory("Economy",10),
-                new FlightClassCategory("Business",10),
-                new FlightClassCategory("First",10));
-
-        flightList.add(flt);
-
-
-        flt = new Flight();
-        flt.flightNo = 4;
-        flt.flightName = "Spicejet";
-        flt.sourceCity = "Delhi";
-        flt.destination = "Banglore";
-        flt.seats = 10;
-        flt.departureDate = fmt.parse("2017-09-07"); //new Date(2017,8,06);
-
-        flt.flightClassCategories = Arrays.asList(
-                new FlightClassCategory("Economy",10),
-                new FlightClassCategory("Business",10),
-                new FlightClassCategory("First",10));
+        flt = new Flight("F0003",172,"Airbud A321","Banglore","Delhi", fmt.parse("2017-09-06"),"", Arrays.asList(
+                new FlightClassCategory("First",0,0.00,0),
+                new FlightClassCategory("Business",20,10000.00,0),
+                new FlightClassCategory("Economy",152,5000.00,120)
+        ));
 
         flightList.add(flt);
 

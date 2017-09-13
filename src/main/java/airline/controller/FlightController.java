@@ -17,13 +17,14 @@ import java.util.List;
 
 @Controller
 @SpringBootApplication
-
+//Main class which executes first
 public class FlightController
 {
-
+    //Intialising the variables for the services
     private FlightService flightService;
     public FlightSearchService flightSearch;
 
+    //Constructor for the main class
     public FlightController()
     {
         flightService=new FlightService();
@@ -34,12 +35,13 @@ public class FlightController
         SpringApplication.run(FlightController.class,args);
     }
 
+//Binding the values of the flight to the model
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String homePage(Model model) {
         model.addAttribute("flight",new Flight());
         return "flightSearch";
     }
-
+//Redirecting the first page
     @RequestMapping(value = "/flightSearch",  method = RequestMethod.POST)
     public String flightSearch(@ModelAttribute(value="flight") Flight flight, BindingResult bindingResult, Model model) throws ParseException {
         int seats= flight.getSeats();
@@ -47,9 +49,9 @@ public class FlightController
         {
             seats =1;
         }
-        List<Flight> flightList=flightSearch.getAllTheFlights(flight.getSourceCity(),flight.getDestination(),seats,flight.getDepartureDate(),flight.flightClass);
+        List<Flight> flightList=flightSearch.getAllTheFlights(flight);//Calling the all flights in DB
         model.addAttribute("flightList",flightList);
         return  "flightSearchResults";
-    }
+}
 
 }

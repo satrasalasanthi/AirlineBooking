@@ -24,11 +24,13 @@
         <th>Name</th>
         <th>Source</th>
         <th>Desination</th>
+        <th>Fare</th>
         <tr th:each="flight:${flightList}">
             <td th:text="${flight.flightNo}"></td>
             <td th:text="${flight.flightName}"></td>
             <td th:text="${flight.sourceCity}"></td>
             <td th:text="${flight.destination}"></td>
+            <td th:text="${flight.fare}"></td>
         </tr>
     </table>
     </div>

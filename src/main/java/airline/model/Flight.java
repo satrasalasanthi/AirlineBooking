@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+//Create the class
 public class Flight {
 
-    public int flightNo;
+    public String flightNo;
     public int seats;
     public String flightName;
     public String sourceCity;
@@ -14,6 +15,33 @@ public class Flight {
     public Date departureDate;
     public  String flightClass;
 
+    public Double getFare() {
+        return fare;
+    }
+
+    public void setFare(Double fare) {
+        this.fare = fare;
+    }
+
+    public Double fare;
+    //Empty Constructor
+    public Flight()
+    {
+
+    }
+    //Flight Constructor
+    public Flight(String flightNo, int seats, String flightName, String sourceCity, String destination, Date departureDate, String flightClass, List<FlightClassCategory> flightClassCategories) {
+        this.flightNo = flightNo;
+        this.seats = seats;
+        this.flightName = flightName;
+        this.sourceCity = sourceCity;
+        this.destination = destination;
+        this.departureDate = departureDate;
+        this.flightClass = flightClass;
+        this.flightClassCategories = flightClassCategories;
+        this.fare =0.00;
+    }
+//All get set methods for each property.
     public String getFlightClass() {
         return flightClass;
     }
@@ -32,7 +60,7 @@ public class Flight {
         this.departureDate = departureDate;
     }
 
-    public void setFlightNo(int flightNo) {
+    public void setFlightNo(String flightNo) {
         this.flightNo = flightNo;
     }
 
@@ -40,6 +68,7 @@ public class Flight {
         this.flightName = flightName;
     }
 
+    //Getting the classcategory for all the flights
     public List<FlightClassCategory> getFlightClassCategories() {
         return flightClassCategories;
     }
@@ -57,7 +86,7 @@ public class Flight {
     }
 
 
-    public int getFlightNo() {
+    public String getFlightNo() {
         return flightNo;
     }
 
