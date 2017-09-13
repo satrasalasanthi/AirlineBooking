@@ -35,7 +35,7 @@ public class FlightService {
 
         flightList.add(flt);
 
-        flt = new Flight("F0003",172,"Airbud A321","Banglore","Delhi", fmt.parse("2017-09-06"),"", Arrays.asList(
+        flt = new Flight("F0003",172,"Airbus A321","Banglore","Delhi", fmt.parse("2017-09-06"),"", Arrays.asList(
                 new FlightClassCategory("First",0,0.00,0),
                 new FlightClassCategory("Business",20,10000.00,0),
                 new FlightClassCategory("Economy",152,5000.00,120)

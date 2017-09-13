@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-//Create the class
+
 public class Flight {
 
     public String flightNo;
@@ -24,12 +24,12 @@ public class Flight {
     }
 
     public Double fare;
-    //Empty Constructor
+
     public Flight()
     {
 
     }
-    //Flight Constructor
+
     public Flight(String flightNo, int seats, String flightName, String sourceCity, String destination, Date departureDate, String flightClass, List<FlightClassCategory> flightClassCategories) {
         this.flightNo = flightNo;
         this.seats = seats;
@@ -41,7 +41,7 @@ public class Flight {
         this.flightClassCategories = flightClassCategories;
         this.fare =0.00;
     }
-//All get set methods for each property.
+
     public String getFlightClass() {
         return flightClass;
     }
