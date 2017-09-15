@@ -25,11 +25,13 @@ public class FlightSearchService {
         flightList=new ArrayList<Flight>();
         flightService =new FlightService();
     }
-    public List<Flight> getAllTheFlights(Flight flight) throws ParseException {
-        if(flight.getSeats()==0)
-        {
-            //seats =1;
-        }
+    public List<Flight> getAllTheFlights(Flight flight) throws Exception {
+
+        if(flight.getFlightClass() == null)
+            throw new Exception("Flight Class is Required");
+
+        if (flight.getSeats() == 0)
+        flight.setSeats(1);
         boolean hasDepartureDate=false;
         hasDepartureDate = flight.getDepartureDate()!= null;
 
@@ -46,51 +48,47 @@ public class FlightSearchService {
 
         for (Flight flt:flightList) {
             for (FlightClassCategory fltClass: flt.getFlightClassCategories()) {
-                if(fltClass.noOfSeats >= flight.getSeats() && fltClass.className.toLowerCase() == flight.getFlightClass().toLowerCase())
-                {
-                    Double surgePrice=0.00;
+                if(fltClass.noOfSeats >= flight.getSeats()) {
+                    if (fltClass.className.toLowerCase().equals(flight.getFlightClass().toLowerCase())) {
+                        Double surgePrice = 0.00;
 
-                    switch (fltClass.className)
-                    {
-                        case "Economy":
-                            int bookedPercent =0;
-                            bookedPercent = (fltClass.bookedSeats / fltClass.noOfSeats)*100;
-                            if( bookedPercent >=90)
-                            {
-                                surgePrice = (fltClass.basePrice *60)/100;
-                            }
-                            else if(bookedPercent >= 40 )
-                            {
-                                surgePrice = (fltClass.basePrice *30)/100;
-                            }
-
-                       case "Business":
-                           SimpleDateFormat departureDayFormat = new SimpleDateFormat("EEEE");
-                           String departureDay= departureDayFormat.format(flt.getDepartureDate());
-                            if(departureDay == "Monday" || departureDay == "Friday" || departureDay == "Saturday")
-                            {
-                                surgePrice = (fltClass.basePrice *40)/100;
-
-                            }
-                        case "First":
-                            int dateMargin = getZeroTimeDate(new Date()).compareTo(getZeroTimeDate(flt.getDepartureDate()));
-                            if(dateMargin <=10)
-                            {
-                                surgePrice = (fltClass.basePrice * dateMargin *10)/100;
-                            }
-                            else
-                            {
+                        switch (fltClass.className) {
+                            case "Economy":
+                                int bookedPercent = 0;
+                                bookedPercent = (fltClass.bookedSeats / fltClass.noOfSeats) * 100;
+                                if (bookedPercent >= 90) {
+                                    surgePrice = (fltClass.basePrice * 60) / 100;
+                                } else if (bookedPercent >= 40) {
+                                    surgePrice = (fltClass.basePrice * 30) / 100;
+                                }
                                 break;
-                            }
-                        default:
+
+                            case "Business":
+                                SimpleDateFormat departureDayFormat = new SimpleDateFormat("EEEE");
+                                String departureDay = departureDayFormat.format(flt.getDepartureDate());
+                                if (departureDay.equals("Monday") || departureDay.equals("Friday") || departureDay.equals("Saturday")) {
+                                    surgePrice = (fltClass.basePrice * 40) / 100;
+
+                                }
+                                break;
+                            case "First":
+                                int dateMargin = getZeroTimeDate(new Date()).compareTo(getZeroTimeDate(flt.getDepartureDate()));
+                                if (dateMargin <= 10) {
+                                    surgePrice = (fltClass.basePrice * dateMargin * 10) / 100;
+                                } else {
+                                    break;
+                                }
+                                break;
+                            default:
                                 flt.setFare(fltClass.basePrice * flight.getSeats());
 
-                    }
-                    flt.setFare((fltClass.basePrice + surgePrice) * flight.getSeats());
+                        }
+                        flt.setFare((fltClass.basePrice + surgePrice) * flight.getSeats());
 
-                    flt.setSeats(flight.getSeats());
-                    flt.setFlightClass(fltClass.className);
-                    break;
+                        flt.setSeats(flight.getSeats());
+                        flt.setFlightClass(fltClass.className);
+                        break;
+                    }
                 }
 
             }

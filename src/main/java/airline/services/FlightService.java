@@ -19,7 +19,7 @@ public class FlightService {
 
         List<Flight> flightList = new ArrayList<Flight>();
 
-        Flight flt = new Flight("F0001",0,"Boeing777-200LR(77L)","Banglore","Hyderabad",fmt.parse("2017-09-07"),"",Arrays.asList(
+        Flight flt = new Flight("F0001",0,"Boeing777-200LR(77L)","Hyderabad","Banglore",fmt.parse("2017-09-07"),"",Arrays.asList(
                 new FlightClassCategory("First",8, 20000.00,5),
                 new FlightClassCategory("Business",35,13000.00,5),
                 new FlightClassCategory("Economy",195,6000.00,5)
@@ -27,7 +27,17 @@ public class FlightService {
 
         flightList.add(flt);
 
-        flt = new Flight("F0002",0,"Airbus A319 V2","Banglore","Hyderabad",fmt.parse("2017-09-07"),"",Arrays.asList(
+        flt = new Flight("F0002",0,"Airbus A319 V2","Hyderabad","Banglore",fmt.parse("2017-09-08"),"",Arrays.asList(
+                new FlightClassCategory("First",8, 20000.00,5),
+                new FlightClassCategory("Business",35,13000.00,5),
+                new FlightClassCategory("Economy",195,6000.00,5)
+        ));
+
+        flightList.add(flt);
+
+
+
+        flt = new Flight("F0002",0,"Airbus A319 V2","Hyderabad","Banglore",fmt.parse("2017-09-07"),"",Arrays.asList(
                 new FlightClassCategory("First",0,0.00,0),
                 new FlightClassCategory("Business",0,0.00,0),
                 new FlightClassCategory("Economy",144,4000.00,100)

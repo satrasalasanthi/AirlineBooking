@@ -1,5 +1,6 @@
 package airline.model;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +14,8 @@ public class Flight {
     public String sourceCity;
     public String destination;
     public Date departureDate;
+
+    @NotNull
     public  String flightClass;
 
     public Double getFare() {

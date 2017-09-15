@@ -43,11 +43,11 @@ public class FlightController
     }
 
     @RequestMapping(value = "/flightSearch",  method = RequestMethod.POST)
-    public String flightSearch(@ModelAttribute(value="flight") Flight flight, BindingResult bindingResult, Model model) throws ParseException {
+    public String flightSearch(@ModelAttribute(value="flight") Flight flight, BindingResult bindingResult, Model model) throws Exception {
         int seats= flight.getSeats();
         if(seats == 0)
         {
-            seats =1;
+            flight.setSeats(1);
         }
         List<Flight> flightList=flightSearch.getAllTheFlights(flight);//Calling the all flights in DB
         model.addAttribute("flightList",flightList);
